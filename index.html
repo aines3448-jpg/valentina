@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Valentine 💘</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: url('fundo.jpg') no-repeat center center fixed;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.overlay {
+  background: rgba(255,255,255,0.85);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.box {
+  width: 90%;
+  max-width: 420px;
+  border-radius: 12px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  background: white;
+}
+
+.logo {
+  font-size: 38px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.logo span:nth-child(1){color:#4285F4;}
+.logo span:nth-child(2){color:#EA4335;}
+.logo span:nth-child(3){color:#FBBC05;}
+.logo span:nth-child(4){color:#4285F4;}
+.logo span:nth-child(5){color:#34A853;}
+.logo span:nth-child(6){color:#EA4335;}
+
+h2 {
+  font-weight: normal;
+  font-size: 20px;
+}
+
+button {
+  padding: 12px 22px;
+  margin: 15px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+#yes {
+  background: #1a73e8;
+  color: white;
+}
+
+#no {
+  background: #e0e0e0;
+  position: relative;
+}
+
+/* 💕 CORAÇÕES */
+.heart {
+  position: fixed;
+  top: -10px;
+  color: pink;
+  font-size: 20px;
+  animation: fall linear infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}
+
+/* 🌷 Mensagem inferior */
+.footer-text {
+  margin-top: 18px;
+  font-size: 13px;
+  color: #555;
+  text-align: center;
+  max-width: 380px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- CORAÇÕES -->
+<script>
+function criarCoracao() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+  heart.style.fontSize = (Math.random() * 15 + 15) + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 6000);
+}
+setInterval(criarCoracao, 400);
+</script>
+
+<div class="overlay">
+  <div class="box" id="card">
+    <div class="logo">
+      <span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span>
+    </div>
+
+    <h2>Dan, amor da minha vida,<br>aceitas ser a minha valentina? 💘</h2>
+
+    <button id="yes" onclick="aceitou()">Sim 💖</button>
+    <button id="no" onmouseover="fugir()">Não 😅</button>
+  </div>
+
+  <div class="footer-text">
+    por esta não esperavas e prometo continuar a surpreender-te se aceitares ser a minha valentina 💕
+  </div>
+</div>
+
+<!-- Música -->
+<iframe id="music" width="0" height="0"
+src="https://www.youtube.com/embed/fHy7J1ZB2j0?enablejsapi=1"
+frameborder="0" allow="autoplay"></iframe>
+
+<script>
+function fugir() {
+  const btn = document.getElementById("no");
+  btn.style.left = Math.random() * 200 - 100 + "px";
+  btn.style.top = Math.random() * 200 - 100 + "px";
+}
+
+function aceitou() {
+  document.getElementById("card").innerHTML = `
+    <h1>💖 YAYYYYYY 💖</h1>
+    <h2>I'm a lucky girl 🥰</h2>
+  `;
+  const iframe = document.getElementById("music");
+  iframe.src += "&autoplay=1";
+}
+</script>
+
+</body>
+</html>
